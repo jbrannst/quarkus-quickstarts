@@ -35,3 +35,13 @@ There is documentation published at <https://quarkus.io> (docs' [sources are her
 * [Maven 3.5.3+](https://maven.apache.org/install.html)
 * [Java - OpenJDK 1.8+](https://adoptopenjdk.net/)
 * For the GraalVM requirements, see our [Building native image guide](https://quarkus.io/guides/building-native-image-guide)
+
+## Developer Workspace
+[![Contribute](https://che.openshift.io/factory/resources/factory-contribute.svg)](https://che.openshift.io/f?url=https://github.com/jbrannst/quarkus-quickstarts)
+
+This Eclipse Che Factory can also be invoked with any host:
+{hostURL}/f?url=https://github.com/jbrannst/quarkus-quickstarts
+It will read the `.factory.json` from the repository to instanciate the developer workspace.
+
+Example:
+http://che.openshift.io/f?url=https://github.com/jbrannst/quarkus-quickstarts
