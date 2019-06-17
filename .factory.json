@@ -1,0 +1,101 @@
+{
+  "defaultEnv": "default",
+  "environments": {
+    "default": {
+      "machines": {
+        "dev-machine": {
+          "attributes": {
+            "memoryLimitBytes": "2147483648"
+          },
+          "servers": {
+            "8080/tcp": {
+              "attributes": {},
+              "port": "8080",
+              "protocol": "http"
+            },
+            "9001/tcp": {
+              "attributes": {},
+              "port": "9001",
+              "protocol": "http"
+            },
+            "9000/tcp": {
+              "attributes": {},
+              "port": "9000",
+              "protocol": "http"
+            },
+            "8000/tcp": {
+              "attributes": {},
+              "port": "8000",
+              "protocol": "http"
+            }
+          },
+          "volumes": {},
+          "installers": [
+            "org.eclipse.che.exec",
+            "org.eclipse.che.terminal",
+            "org.eclipse.che.ws-agent"
+          ],
+          "env": {
+            "MAVEN_OPTS": "-Xmx512m",
+            "CHE_MACHINE_NAME": "dev-machine"
+          }
+        }
+      },
+      "recipe": {
+        "type": "dockerimage",
+        "content": "quay.io/tqvarnst/che-quarkus:0.12.0"
+      }
+    }
+  },
+  "projects": [
+    {
+      "name": "quarkus-quickstarts",
+      "attributes": {
+        "contribute_to_branch": [
+          "master"
+        ]
+      },
+      "type": "maven",
+      "source": {
+        "location": "https://github.com/quarkusio/quarkus-quickstarts",
+        "type": "git",
+        "parameters": {}
+      },
+      "path": "/quarkus-quickstarts",
+      "problems": [],
+      "mixins": [
+        "pullrequest"
+      ]
+    }
+  ],
+  "name": "wksp-zvqk",
+  "commands": [
+    {
+      "commandLine": "/opt/apache-maven-3.6.0/bin/mvn -f ${current.project.path}/pom.xml compile quarkus:dev",
+      "name": "Run in dev mode",
+      "attributes": {
+        "goal": "Run",
+        "previewUrl": "${server.8080/tcp}/hello/greeting/Quarkus"
+      },
+      "type": "mvn"
+    },
+    {
+      "commandLine": "/opt/apache-maven-3.6.0/bin/mvn -f ${current.project.path}/pom.xml",
+      "name": "clean build",
+      "attributes": {
+        "goal": "Build",
+        "previewUrl": ""
+      },
+      "type": "mvn"
+    },
+    {
+      "commandLine": "/opt/apache-maven-3.6.0/bin/mvn  verify -f ${current.project.path}/pom.xml",
+      "name": "test",
+      "attributes": {
+        "goal": "Test",
+        "previewUrl": ""
+      },
+      "type": "mvn"
+    }
+  ]
+}
