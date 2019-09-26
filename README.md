@@ -44,4 +44,4 @@ This Eclipse Che Factory can also be invoked with any host:
 It will read the `.factory.json` from the repository to instanciate the developer workspace.
 
 Example:
-http://che.openshift.io/f?url=https://github.com/jbrannst/quarkus-quickstarts
+http://codeready-dev.apps.ii.ocp.rocks/f?url=https://github.com/jbrannst/quarkus-quickstarts
